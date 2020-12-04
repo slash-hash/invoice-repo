@@ -22,4 +22,4 @@ Splitting into multiple entities
 For logic, depending no how much other systems are already doing. For example we can add on customer validation. Validate if the customer is really existing. Validate if product is existing.
 
 * adding invoice
-curl -X POST http://127.0.0.1:8080/add/ -d "{\"customerInternalIdentifier\" : \"GoodCustomer\", \"customerName\" : \"JetBrains\", \"customerAddress\" : \"Prague\" , \"orderDate\" : \"2020-12-10\", \"isoCurrency\":\"USD\", \"orderReferenceNumber\":6021, \"productSKU\":\"fsdgff\", \"productName\":\"new laptop\", \"productQuantity\":15, \"price\":256.20}" -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8080/add/ -d "{\"customerInternalIdentifier\" : 1, \"customerName\" : \"JetBrains\", \"customerAddress\" : \"Prague\" , \"orderDate\" : \"2020-12-10\", \"isoCurrency\":\"USD\", \"orderReferenceNumber\":6021, \"productSKU\":340955, \"productName\":\"new laptop\", \"productQuantity\":15, \"price\":256.20, \"invoiceCreationDate\": \"2014-05-30\", \"salesSystemId\":22}" -H "Content-Type: application/json"
