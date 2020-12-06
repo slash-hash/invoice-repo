@@ -37,7 +37,7 @@ curl -X POST http://127.0.0.1:8080/add/ -d "{\"customerInternalIdentifier\" : 1,
 curl -X PUT http://127.0.0.1:8080/update/2 -d "{\"customerInternalIdentifier\":653,\"customerName\":\"JetBrains\",\"customerAddress\":\"Prague\",\"orderDate\":\"2020-12-10\",\"isoCurrency\":\"USD\",\"orderReferenceNumber\":6021,\"productSKU\":3928,\"productName\":\"new laptop\",\"productQuantity\":15,\"price\":256.2, \"salesSystemId\":203, \"invoiceCreationDate\": \"2014-05-30\", \"id\":2}," -H "Content-Type: application/json"
 
 
-list of json fields with proper type
+list of json fields with proper type:
 long - customerInternalIdentifier, int - productQuantity, float - price, long - salesSystemId, 
-String - customerName, String customerAddress, Date - orderDate, ISO currency code - isoCurrency,
- long - orderReferenceNumber, long - productSKU, String - productName
+String - customerName, String customerAddress, Date - orderDate, ISO currency code - isoCurrency, 
+long - orderReferenceNumber, long - productSKU, String - productName
