@@ -45,12 +45,14 @@ public class InvoiceController {
     public ResponseEntity<?> createInvoice(@RequestBody Invoice invoice) {
         // what should we do in case of insufficient data inside json or unclear mapping of data
         // create fields mandatory using annotation inside Invoice entity
-        if (invoice.getId() != null
-                || invoiceRepository.findInvoiceBySalesId(invoice.getSalesSystemId()) != null) {
-            return createFormattedResponse(HttpStatus.CONFLICT, "please don't use ID and existing sales system id, it is created internally");
-        } else {
+        if (invoice.getId() == null
+                && invoiceRepository.findInvoiceBySalesId(invoice.getSalesSystemId()) == null) {
             Invoice createdInvoice = invoiceRepository.save(invoice);
             return createFormattedResponse(HttpStatus.CREATED, "invoice created with id: " + createdInvoice.getId());
+        } else {
+            return createFormattedResponse(HttpStatus.CONFLICT,
+                    "please don't use /add endpoint with existing internal ID or sales system id \n" +
+                            "use /update endpoint for updating");
         }
     }
 
@@ -59,9 +61,9 @@ public class InvoiceController {
     public ResponseEntity<?> updateInvoice(@PathVariable long id, @RequestBody Invoice invoice) {
         Optional<Invoice> invoiceExisting = invoiceRepository.findById(id);
         if (invoiceExisting.isPresent()) {
+            invoice.setId(invoiceExisting.get().getId());
             invoiceRepository.save(invoice);
             return createFormattedResponse(HttpStatus.OK, "resource updated " + id);
-//            return ResponseEntity.status.build();
         } else {
             return ResponseEntity.status((HttpStatus.NOT_FOUND)).build();
         }
