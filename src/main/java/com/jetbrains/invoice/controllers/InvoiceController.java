@@ -59,10 +59,10 @@ public class InvoiceController {
     @PutMapping("/update/{id}")
     @ResponseStatus
     public ResponseEntity<?> updateInvoice(@PathVariable long id, @RequestBody Invoice invoice) {
-        Optional<Invoice> invoiceExisting = invoiceRepository.findById(id);
-        if (invoiceExisting.isPresent()) {
-            invoice.setId(invoiceExisting.get().getId());
-            invoiceRepository.save(invoice);
+        Optional<Invoice> existingInvoice = invoiceRepository.findById(id);
+        if (existingInvoice.isPresent()) {
+            invoice.setId(existingInvoice.get().getId());
+            Invoice createdInvoice = invoiceRepository.save(invoice);
             return createFormattedResponse(HttpStatus.OK, "resource updated " + id);
         } else {
             return ResponseEntity.status((HttpStatus.NOT_FOUND)).build();
