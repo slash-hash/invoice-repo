@@ -19,10 +19,15 @@ reference to other system etc.
 after starting app it is running on default 8080 port and these endpoints are allowed:
 
 **/invoices** - list of all existing invoices
+
 **/update/{id}** - put message with json body and existing id in invoices list
+
 **/add** - post message with json body
+
 **/delete/{id}** - delete message with id of existing invoice (id is internal system id not sales system id)
+
 **/invoice/bysalesid/{id}** - searches invoices by sales system id, the other systems will probably want to search using this id
+
 
 ##### Suggested further steps and optimization: 
 For now as invoice backend stores data and does not do much of business logic therefore spring controller and repository are used. 
