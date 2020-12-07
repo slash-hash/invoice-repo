@@ -12,7 +12,7 @@ In case system grows larger splitting into multiple entities might make sense, c
 ######Fields that are mandatory currently:
 customerInternalIdentifier, productQuantity, price, salesSystemId(also has to be unique as we don't expect two invoices with same id)
 
-Furthermore other fields can be considered like: type of invoice, is invoice recurring, person responsible for sales, 
+Furthermore, other fields can be considered like: type of invoice, is invoice recurring, person responsible for sales, 
 reference to other system etc.
 
 **To start the app**:from command line in unix systems just run **./gradlew bootRun** 
